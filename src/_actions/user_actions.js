@@ -8,7 +8,7 @@ import {
 import { USER_SERVER } from '../components/Config.js';
 
 export function registerUser(dataToSubmit){
-    const request = axios.post('api/users/register',dataToSubmit)
+    const request = axios.post('https://movieappfasal.herokuapp.com/api/users/register',dataToSubmit)
         .then(response => response.data);
     
     return {
@@ -18,7 +18,7 @@ export function registerUser(dataToSubmit){
 }
 
 export function loginUser(dataToSubmit){
-    const request = axios.post('api/users/login',dataToSubmit)
+    const request = axios.post('https://movieappfasal.herokuapp.com/api/users/login',dataToSubmit)
                 .then(response => response.data);
 
     return {
@@ -28,7 +28,7 @@ export function loginUser(dataToSubmit){
 }
 
 export function auth(){
-    const request = axios.get('api/users/auth')
+    const request = axios.get('https://movieappfasal.herokuapp.com/api/users/auth')
     .then(response => response.data);
 
     return {
@@ -38,7 +38,7 @@ export function auth(){
 }
 
 export function logoutUser(){
-    const request = axios.get('api/users/logout')
+    const request = axios.get('https://movieappfasal.herokuapp.com/api/users/logout')
     .then(response => response.data);
 
     return {
