@@ -4,7 +4,7 @@ module.exports = function (app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            target: '',
+            target: 'https://movieappfasal.herokuapp.com',
             changeOrigin: true,
         })
     );

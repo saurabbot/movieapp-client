@@ -50,7 +50,7 @@ const WatchlistPage = () => {
                     <tr>
                         <th>Movie Title</th>
                         <th>Movie Runtime</th>
-                        <th>Remove from watchlist</th>
+                        <th><button onClick={handleRemove}>Remove from watchlist</button></th>
                     </tr>
                 </thead>
                 <tbody>
