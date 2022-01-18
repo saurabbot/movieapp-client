@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/movie/:movieId" component={Auth(MovieDetail, false)} />
-          <Route exact path="/favorite" component={Auth(WatchlistPage,null)} />
+          <Route exact path="/favorite" component={Auth(WatchlistPage,false)} />
         </Switch>
       </div>
       <Footer />

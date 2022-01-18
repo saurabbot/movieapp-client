@@ -11,7 +11,7 @@ const WatchlistPage = () => {
         fectchWatchlist();
     },[])
     const fectchWatchlist = () => {
-        axios.post('api/favorite/getFavoritedMovie', vairables)
+        axios.post('https://movieappfasal.herokuapp.com/api/favorite/getFavoritedMovie', vairables)
             .then(res => {
                 if(res.data.success){
                     setfavoritedMovie(res.data.favorites);
@@ -25,7 +25,7 @@ const WatchlistPage = () => {
             movieId: movieId,
             userId: localStorage.getItem('userId')
         }
-        axios.post('api/favorite/removeFromFavorite', load)
+        axios.post('https://movieappfasal.herokuapp.com/api/favorite/removeFromFavorite', load)
                 .then(res => {
                     if(res.data.success){
                         fectchWatchlist();
