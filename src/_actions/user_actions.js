@@ -77,8 +77,8 @@ export function loginUser(dataToSubmit){
 }
 
 export function auth(){
-    const request = axios.get('https://movieappfasal.herokuapp.com/api/users/auth')
-    .then(response => response.data);
+    const request = fetch('https://movieappfasal.herokuapp.com/api/users/auth')
+    .then(response => response.body);
 
     return {
         type: AUTH_USER,
