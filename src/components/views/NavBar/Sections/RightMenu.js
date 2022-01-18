@@ -10,7 +10,7 @@ function RightMenu(props) {
   const user = useSelector(state => state.user)
 
   const logoutHandler = () => {
-    axios.get('api/users/logout').then(response => {
+    axios.get('https://movieappfasal.herokuapp.com/api/users/logout').then(response => {
       if (response.status === 200) {
         props.history.push("/login");
       } else {

@@ -13,7 +13,7 @@ const Favorite = (props) => {
     }
     useEffect(() => {
         
-        axios.post('api/favorite/favoriteNumber', variable)
+        axios.post('https://movieappfasal.herokuapp.com/api/favorite/favoriteNumber', variable)
             .then(res => {
                 if(res.data.sucess){
                     setfavoriteNumber(res.data.subscribeNumber);
@@ -21,7 +21,7 @@ const Favorite = (props) => {
                     alert('Failed to get favorite Number')
                 }
             })
-        axios.post('api/favorite/favorited', variable)
+        axios.post('https://movieappfasal.herokuapp.com/api/favorite/favorited', variable)
             .then(res => {
                 if(res.data.success){
                     setfavorited(res.data.subscribed)
@@ -32,7 +32,7 @@ const Favorite = (props) => {
     },[])
     const onClickWatch = () => {
         if(favorited){
-            axios.post('api/favorite/removeFromFavorite', variable)
+            axios.post('https://movieappfasal.herokuapp.com/api/favorite/removeFromFavorite', variable)
                 .then(res => {
                     if(res.data.success){
                         setfavoriteNumber(favoriteNumber-1);
@@ -42,7 +42,7 @@ const Favorite = (props) => {
                     }
                 })
         } else {
-            axios.post('api/favorite/addToFavorite', variable)
+            axios.post('https://movieappfasal.herokuapp.com/api/favorite/addToFavorite', variable)
                 .then(res => {
                     if(res.data.success){
                         setfavoriteNumber(favoriteNumber+1);
