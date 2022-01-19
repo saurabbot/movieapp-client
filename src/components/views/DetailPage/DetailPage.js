@@ -12,7 +12,7 @@ const DetailPage = (props) => {
     useEffect(() => {
         const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
         fetchMovieInfo(endpoint);
-    })
+    },[])
     const fetchMovieInfo = (path) => {
         fetch(path)
             .then(res => res.json())
@@ -26,6 +26,9 @@ const DetailPage = (props) => {
                         setCast(res.cast);
                     }) 
             })
+    }
+    const movieVariable = {
+        movieId: movieId
     }
     return (
         <div>

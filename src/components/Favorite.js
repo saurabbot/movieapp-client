@@ -1,6 +1,6 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState,useSelector} from 'react';
 import axios from 'axios';
-import { Button } from 'antd'
+import { Button,Progress } from 'antd'
 const Favorite = (props) => {
     const [favoriteNumber,setfavoriteNumber] = useState(0);
     const [favorited,setfavorited] = useState(false);
@@ -15,47 +15,39 @@ const Favorite = (props) => {
         
         axios.post('https://movieappfasal.herokuapp.com/api/favorite/favoriteNumber', variable)
             .then(res => {
-                if(res.data.sucess){
-                    setfavoriteNumber(res.data.subscribeNumber);
-                } else{
-                    alert('Failed to get favorite Number')
-                }
+                setfavoriteNumber(res.data.subscribeNumber);
             })
         axios.post('https://movieappfasal.herokuapp.com/api/favorite/favorited', variable)
             .then(res => {
-                if(res.data.success){
-                    setfavorited(res.data.subscribed)
-                } else {
-                    alert('Failed to get Favorite info');
-                }
+                setfavorited(res.data.subscribed)
             })
     },[])
     const onClickWatch = () => {
+
         if(favorited){
             axios.post('https://movieappfasal.herokuapp.com/api/favorite/removeFromFavorite', variable)
                 .then(res => {
-                    if(res.data.success){
-                        setfavoriteNumber(favoriteNumber-1);
-                        setfavorited(!favorited);
-                    } else{
-                        alert('Failed to remove from Watchlist');
-                    }
+                    setfavoriteNumber(favoriteNumber-1);
+                    setfavorited(!favorited);
                 })
         } else {
             axios.post('https://movieappfasal.herokuapp.com/api/favorite/addToFavorite', variable)
                 .then(res => {
-                    if(res.data.success){
-                        setfavoriteNumber(favoriteNumber+1);
-                        setfavorited(!favorited);
-                    } else{
-                        alert('Failed to add to Watchlist');
-                    }
+                    setfavoriteNumber(favoriteNumber+1);
+                    setfavorited(!favorited);
                 })
         }
     }
     return (
         <div style={{display: 'flex',alignItems: 'center',justifyContent: 'center'}}>
-            <Button onClicl={onClickWatch}style={{postion: 'relative', width: '400px',margin: '20px',borderRadius: '30px'}}>{favorited ? "remove from watchlist" : "Add to watchlist  "}{favoriteNumber} people have added it to watchlist</Button>
+            <Button onClick={onClickWatch}style={{postion: 'relative', width: '400px',margin: '20px',borderRadius: '30px'}}>
+                {
+                    favorited ? "Remove from Watchlist" : "Add to Watchlist"
+                }
+            </Button>
+            <Progress type="circle" percent={favoriteNumber} format={percent => `${favoriteNumber} people`} />
+            <h4>Have added it to their watchlist</h4>
+
         </div>
     )
 }
