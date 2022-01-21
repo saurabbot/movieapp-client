@@ -23,7 +23,7 @@ const WatchlistPage = () => {
     const handleRemove = (movieId) => {
         const load = {
             movieId: movieId,
-            userId: localStorage.getItem('userId')
+            userFrom: localStorage.getItem('userId')
         }
         axios.post('https://movieappfasal.herokuapp.com/api/favorite/removeFromFavorite', load)
                 .then(res => {
